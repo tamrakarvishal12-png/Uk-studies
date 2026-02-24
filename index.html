@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UK Studies Eligibility Checker</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-slate-50 min-h-screen font-sans text-slate-900">
+    
+    <!-- Navbar -->
+    <nav class="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-3xl mx-auto px-4 h-16 flex items-center gap-2">
+            <div class="bg-blue-600 p-2 rounded-lg text-white">
+                <i class="fa-solid fa-globe"></i>
+            </div>
+            <span class="text-xl font-bold text-blue-600 tracking-tight">ukstudies</span>
+        </div>
+    </nav>
+
+    <main class="max-w-3xl mx-auto px-4 py-12">
+        <div class="bg-white rounded-3xl shadow-xl border border-slate-100 overflow-hidden">
+            
+            <!-- Header & Progress Bar -->
+            <div class="bg-blue-600 p-8 text-white">
+                <h2 class="text-3xl font-bold mb-2">Eligibility Checker</h2>
+                <p class="text-blue-100">Check your options for UK Universities.</p>
+                
+                <div class="flex gap-4 mt-8">
+                    <div class="flex-1">
+                        <div id="prog-1" class="h-2 bg-white rounded-full transition-all"></div>
+                        <div class="text-xs mt-2 font-bold uppercase tracking-wider">Step 1</div>
+                    </div>
+                    <div class="flex-1">
+                        <div id="prog-2" class="h-2 bg-white/30 rounded-full transition-all"></div>
+                        <div class="text-xs mt-2 font-bold uppercase tracking-wider text-white/70" id="prog-text-2">Step 2</div>
+                    </div>
+                    <div class="flex-1">
+                        <div id="prog-3" class="h-2 bg-white/30 rounded-full transition-all"></div>
+                        <div class="text-xs mt-2 font-bold uppercase tracking-wider text-white/70" id="prog-text-3">Step 3</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Form -->
+            <form id="eligibility-form" class="p-8">
+                
+                <!-- Step 1: Basic Info -->
+                <div id="step-1" class="step-content">
+                    <h3 class="text-xl font-bold mb-6 text-slate-800"><i class="fa-solid fa-school text-blue-600 mr-2"></i> Basic Information</h3>
+                    <div class="space-y-5">
+                        <div>
+                            <label class="block text-sm font-bold mb-2 text-slate-700">Highest Qualification</label>
+                            <select id="qualification" class="w-full p-3 border border-slate-200 rounded-xl bg-white focus:ring-2 focus:ring-blue-600 outline-none">
+                                <option value="+2 / High School">+2 / High School</option>
+                                <option value="Bachelor Degree">Bachelor Degree</option>
+                                <option value="Master Degree">Master Degree</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold mb-2 text-slate-700">Nepal University / Board</label>
+                            <select id="nepalUniversity" class="w-full p-3 border border-slate-200 rounded-xl bg-white focus:ring-2 focus:ring-blue-600 outline-none">
+                                <option value="NEB (National Examination Board)">NEB (National Examination Board)</option>
+                                <option value="Tribhuvan University">Tribhuvan University</option>
+                                <option value="Pokhara University">Pokhara University</option>
+                                <option value="Purbanchal University">Purbanchal University</option>
+                                <option value="Kathmandu University">Kathmandu University</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Academic Details -->
+                <div id="step-2" class="step-content hidden">
+                    <h3 class="text-xl font-bold mb-6 text-slate-800"><i class="fa-solid fa-graduation-cap text-blue-600 mr-2"></i> Academic Details</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-5">
+                        <div>
+                            <label class="block text-sm font-bold mb-2 text-slate-700">Grade</label>
+                            <select id="academicGrade" class="w-full p-3 border border-slate-200 rounded-xl bg-white focus:ring-2 focus:ring-blue-600 outline-none">
+                                <option value="">Select</option>
+                                <option value="A+">A+</option><option value="A">A</option><option value="B+">B+</option>
+                                <option value="B">B</option><option value="C+">C+</option><option value="C">C</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold mb-2 text-slate-700">GPA</label>
+                            <input type="number" step="0.01" id="gpa" placeholder="e.g. 3.2" class="w-full p-3 border border-slate-200 rounded-xl bg-white focus:ring-2 focus:ring-blue-600 outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold mb-2 text-slate-700">Percentage (%)</label>
+                            <input type="number" step="0.01" id="percentage" placeholder="e.g. 75" class="w-full p-3 border border-slate-200 rounded-xl bg-white focus:ring-2 focus:ring-blue-600 outline-none">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold mb-2 text-slate-700">Academic Gap</label>
+                        <select id="gap" class="w-full p-3 border border-slate-200 rounded-xl bg-white focus:ring-2 focus:ring-blue-600 outline-none">
+                            <option value="No gap">No gap</option>
+                            <option value="1 year">1 year</option>
+                            <option value="2 years">2 years</option>
+                            <option value="3+ years">3+ years</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Step 3: English Proficiency -->
+                <div id="step-3" class="step-content hidden">
+                    <h3 class="text-xl font-bold mb-6 text-slate-800"><i class="fa-solid fa-language text-blue-600 mr-2"></i> English Proficiency</h3>
+                    <div class="mb-6">
+                        <label class="block text-sm font-bold mb-2 text-slate-700">Test Type</label>
+                        <select id="englishType" class="w-full p-3 border border-slate-200 rounded-xl bg-white focus:ring-2 focus:ring-blue-600 outline-none">
+                            <option value="IELTS">IELTS</option>
+                            <option value="PTE">PTE</option>
+                            <option value="Duolingo">Duolingo</option>
+                            <option value="Waiver">IELTS Waiver (12th English)</option>
+                        </select>
+                    </div>
+                    
+                    <div id="score-container" class="space-y-5 bg-slate-50 p-5 rounded-xl border border-slate-100">
+                        <div id="ielts-input">
+                            <label class="block text-sm font-bold mb-2 text-slate-700">Overall IELTS Band</label>
+                            <input type="number" step="0.5" id="ieltsScore" placeholder="e.g. 6.5" class="w-full p-3 border border-slate-200 rounded-xl bg-white focus:ring-2 focus:ring-blue-600 outline-none">
+                        </div>
+                        <div id="pte-input" class="hidden">
+                            <label class="block text-sm font-bold mb-2 text-slate-700">Overall PTE Score</label>
+                            <input type="number" id="pteScore" placeholder="e.g. 58" class="w-full p-3 border border-slate-200 rounded-xl bg-white focus:ring-2 focus:ring-blue-600 outline-none">
+                        </div>
+                        <div id="duolingo-input" class="hidden">
+                            <label class="block text-sm font-bold mb-2 text-slate-700">Overall Duolingo Score</label>
+                            <input type="number" id="duolingoScore" placeholder="e.g. 115" class="w-full p-3 border border-slate-200 rounded-xl bg-white focus:ring-2 focus:ring-blue-600 outline-none">
+                        </div>
+                        <div id="waiver-input" class="hidden grid grid-cols-1 md:grid-cols-2 gap-5">
+                            <div>
+                                <label class="block text-sm font-bold mb-2 text-slate-700">12th English Grade</label>
+                                <select id="englishGrade" class="w-full p-3 border border-slate-200 rounded-xl bg-white focus:ring-2 focus:ring-blue-600 outline-none">
+                                    <option value="">Select</option>
+                                    <option value="A+">A+</option><option value="A">A</option><option value="B+">B+</option>
+                                    <option value="B">B</option><option value="C+">C+</option><option value="C">C</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold mb-2 text-slate-700">English Marks (%)</label>
+                                <input type="number" id="waiverPercentage" placeholder="e.g. 70" class="w-full p-3 border border-slate-200 rounded-xl bg-white focus:ring-2 focus:ring-blue-600 outline-none">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation Buttons -->
+                <div class="mt-10 flex justify-between items-center pt-6 border-t border-slate-100">
+                    <button type="button" id="btn-prev" class="hidden flex items-center gap-2 text-slate-500 font-bold hover:text-slate-800 transition-colors">
+                        <i class="fa-solid fa-chevron-left"></i> Back
+                    </button>
+                    <div class="flex-1"></div>
+                    <button type="button" id="btn-next" class="bg-blue-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-blue-700 transition-all shadow-lg flex items-center gap-2">
+                        Next <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                    <button type="submit" id="btn-submit" class="hidden bg-green-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-green-700 transition-all shadow-lg flex items-center gap-2">
+                        Check Eligibility <i class="fa-solid fa-check-circle"></i>
+                    </button>
+                </div>
+            </form>
+
+            <!-- Results View -->
+            <div id="results-view" class="hidden p-8">
+                <div class="text-center mb-10">
+                    <h2 id="result-status" class="text-4xl font-bold mb-3"></h2>
+                    <p id="result-count" class="text-slate-500 font-medium"></p>
+                </div>
+                
+                <div id="university-list" class="space-y-4 max-h-[400px] overflow-y-auto pr-2">
+                    <!-- Universities injected here via JS -->
+                </div>
+                
+                <button type="button" id="btn-restart" class="mt-8 w-full bg-slate-100 text-slate-700 px-6 py-4 rounded-xl font-bold hover:bg-slate-200 transition-colors">
+                    Start Over
+                </button>
+            </div>
+            
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

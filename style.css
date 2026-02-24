@@ -1,0 +1,36 @@
+/* Utility to force hide elements */
+.hidden {
+    display: none !important;
+}
+
+/* Smooth fade-in animation for steps */
+.step-content {
+    animation: slideUpFade 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideUpFade {
+    from { 
+        opacity: 0; 
+        transform: translateY(15px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+/* Custom scrollbar for the results list */
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    background: #f8fafc; 
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1; 
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8; 
+}
